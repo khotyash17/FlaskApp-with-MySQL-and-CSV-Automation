@@ -1,5 +1,4 @@
 version: '3.8'
-
 services:
   db:
     image: mysql:5.7
@@ -10,7 +9,6 @@ services:
       MYSQL_DATABASE: studentsdb
     ports:
       - "3306:3306"
-
   web:
     build: .
     container_name: flask-app
@@ -18,3 +16,15 @@ services:
       - "5000:5000"
     depends_on:
       - db
+  csv-exporter:
+    build: ./cron
+    container_name: csv-exporter
+    depends_on:
+      - db
+    volumes:
+      - ./exports:/data   # host folder where CSVs will be saved
+    networks:
+      - mynet
+networks:
+  mynet:
+    driver: bridge
