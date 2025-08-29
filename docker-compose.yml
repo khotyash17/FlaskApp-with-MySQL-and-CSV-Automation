@@ -7,8 +7,11 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: studentsdb
-    ports:
-      - "3306:3306"
+    volumes:
+      - ./mysql-init:/docker-entrypoint-initdb.d
+      - db_data:/var/lib/mysql
+    networks:
+      - mynet
   web:
     build: .
     container_name: flask-app
@@ -16,8 +19,10 @@ services:
       - "5000:5000"
     depends_on:
       - db
+    networks:
+      - mynet
   csv-exporter:
-    build: ./cron
+    build: ./corn
     container_name: csv-exporter
     depends_on:
       - db
@@ -28,3 +33,5 @@ services:
 networks:
   mynet:
     driver: bridge
+volumes:
+  db_data: {}

@@ -4,6 +4,7 @@ RUN apk add --no-cache mysql-client bash busybox-suid
 
 WORKDIR /app
 COPY export.sh /app/export.sh
+RUN chmod +x /app/export.sh
 
 # Shared folder for CSVs
 VOLUME /data
