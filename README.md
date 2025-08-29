@@ -20,16 +20,16 @@ This project is a **Dockerized Flask Web Application** integrated with **MySQL**
 
 ---
 ## 📂 Project Structure 
-project-root/
-│── app.py # Flask web application
-│── requirements.txt # Python dependencies
-│── Dockerfile # Flask app Dockerfile
-│── docker-compose.yml # Multi-container setup
-│── mysql-init/ # Auto-init SQL scripts for DB & table
-│── corn/ # CSV exporter service
-│ ├── Dockerfile
-│ ├── export.sh # Export script
-│── exports/ # CSV files will be saved here
+project-root/ <br>
+│── app.py # Flask web application / <br>
+│── requirements.txt # Python dependencies / <br>
+│── Dockerfile # Flask app Dockerfile <br>
+│── docker-compose.yml # Multi-container setup <br>
+│── mysql-init/ # Auto-init SQL scripts for DB & table <br>
+│── corn/ # CSV exporter service <br>
+│ ├── Dockerfile <br>
+│ ├── export.sh # Export script <br>
+│── exports/ # CSV files will be saved here <br>
 
 ---
 
@@ -47,13 +47,15 @@ docker compose up -d --build
 3️⃣ Access the Flask App
 ```
 Open browser → http://localhost:5000
-Register students via the form
 ```
+Register students via the form
+
 4️⃣ Export Data to CSV
 ```
 docker exec -it csv-exporter sh /app/export.sh
-. Exported CSV files will appear in the exports/ folder
 ```
+- Exported CSV files will appear in the exports/ folder
+
 📊 Example CSV Output
 ```
 id,name,email,created_at
@@ -68,4 +70,4 @@ Deploy on AWS/GCP for cloud-based usage
 ```
 👨‍💻 Author
 
-Your Name – Cloud & DevOps Enthusiast 🌩️
+Yash Khot – Cloud & DevOps Enthusiast
