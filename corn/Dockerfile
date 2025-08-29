@@ -1,5 +1,7 @@
 FROM alpine:latest
+FROM python:3.9-alpine
 
+RUN pip install boto3 awscli
 RUN apk add --no-cache mysql-client bash busybox-suid
 
 WORKDIR /app
